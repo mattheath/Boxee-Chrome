@@ -1,0 +1,21 @@
+<html>
+<head>
+	<script type = "text/javascript">
+		// Page action ID
+		var pageactionid = "BoxeePageAction";
+		
+		chrome.extension.onConnect.addListener(function(port) {
+			chrome.pageActions.enableForTab(
+				pageactionid, {tabId: port.tab.id,
+								url: port.tab.url,
+								title: "Send to Boxee",
+								iconId: 0});
+		});
+			
+		chrome.pageAction.onClicked.addListener(function(tab) {
+			chrome.tabs.executeScript(null,{code:"var b=document.body;if(b&&!document.xmlVersion){void(z=document.createElement('script'));void(z.src='http://www.boxee.tv/bookmarklet');void(b.appendChild(z));}else{}"});
+		});
+
+	</script>
+</head>
+</html>
