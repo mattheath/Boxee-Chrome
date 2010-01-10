@@ -11,14 +11,14 @@
   }],
   "description": "Quickly add videos to your Boxee queue straight from Chrome!",
   "icons": {
-	"128": "Images/boxee-128.png",
-	"64": "Images/boxee-64.png",
-	"32": "Images/boxee-32.png",
-	"16": "Images/boxee-16.png"
+	"128": "Images/Boxee-128.png",
+	"64": "Images/Boxee-64.png",
+	"32": "Images/Boxee-32.png",
+	"16": "Images/Boxee-16.png"
   },
   "name": "Add to Boxee for Chrome",
   "permissions": ["tabs", "http://*/*", "https://*/*" ],
   "update_url": "http://clients2.google.com/service/update2/crx",
-  "version": "1.5.1"
+  "version": "1.5.2"
 
 }
