@@ -24,11 +24,11 @@ function findVideos() {
 
     if (count > 0)
     {
-		doNotifyBoxee();
+		doNotifyBoxee(count);
     }
 };
 
-function doNotifyBoxee() {
+function doNotifyBoxee(count) {
     var port = chrome.extension.connect({name: "boxeeNotify"});
-	port.postMessage({found: (e != undefined)});
+	port.postMessage({found: (count != undefined)});
 };
