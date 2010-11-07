@@ -24,7 +24,8 @@ function findVideos() {
 
 	// Default to always showing the extension if the user is in Google Reader, reddit, or digg
 	var doc_title = document.getElementsByTagName('title')
-	if (/^(Google Reader|reddit|Digg)*?/.test(doc_title[0].innerHTML)) {
+	if (/^(Google Reader|reddit|Digg).*?/.test(doc_title[0].innerHTML)) {
+		console.log(doc_title[0].innerHTML)
 		++count;
 	};
 
