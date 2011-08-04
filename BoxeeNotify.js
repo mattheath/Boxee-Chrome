@@ -30,8 +30,8 @@ function findVideos() {
 	};
 
 	// Also show extension if on IMDb and on a media page - film or tv episode
-	if (/.*(IMDb).*/.test(doc_title[0].innerHTML) && /(tt\d{7})/.test(document.URL)) {
-		console.log(doc_title[0].innerHTML)
+	if (onIMDbMediaPage()) {
+		console.log(doc_title[0].innerHTML + ' - on media page')
 		++count;
 	};
 
@@ -45,3 +45,11 @@ function doNotifyBoxee(count) {
     var port = chrome.extension.connect({name: "boxeeNotify"});
 	port.postMessage({found: (count != undefined)});
 };
+
+/**
+ * Check if we're on IMDb and on a film or TV episode page
+ */
+function onIMDbMediaPage() {
+	// Must have IMDb in the page title, and IMDb ID in the URL (tt\d{7})
+	return (/.*(IMDb).*/.test(document.getElementsByTagName('title')[0].innerHTML) && /(tt\d{7})/.test(document.URL));
+}
