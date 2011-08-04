@@ -53,3 +53,10 @@ function onIMDbMediaPage() {
 	// Must have IMDb in the page title, and IMDb ID in the URL (tt\d{7})
 	return (/.*(IMDb).*/.test(document.getElementsByTagName('title')[0].innerHTML) && /(tt\d{7})/.test(document.URL));
 }
+
+/**
+ * Attempt to add the IMDb item to the Boxee queue
+ */
+function addIMDbToQueue() {
+
+}
