@@ -29,6 +29,12 @@ function findVideos() {
 		++count;
 	};
 
+	// Also show extension if on IMDb and on a media page - film or tv episode
+	if (/.*(IMDb).*/.test(doc_title[0].innerHTML) && /(tt\d{7})/.test(document.URL)) {
+		console.log(doc_title[0].innerHTML)
+		++count;
+	};
+
     if (count > 0)
     {
 		doNotifyBoxee(count);
