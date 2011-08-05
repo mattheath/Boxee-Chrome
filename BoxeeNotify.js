@@ -30,7 +30,7 @@ function findVideos() {
 	};
 
 	// Also show extension if on IMDb and on a media page - film or tv episode
-	if (onIMDbMediaPage()) {
+	if (onIMDbMediaPage(doc_title[0].innerHTML, document.URL)) {
 		console.log(doc_title[0].innerHTML + ' - on media page')
 		++count;
 	};
@@ -49,14 +49,14 @@ function doNotifyBoxee(count) {
 /**
  * Check if we're on IMDb and on a film or TV episode page
  */
-function onIMDbMediaPage() {
+function onIMDbMediaPage(title, url) {
 	// Must have IMDb in the page title, and IMDb ID in the URL (tt\d{7})
-	return (/.*(IMDb).*/.test(document.getElementsByTagName('title')[0].innerHTML) && /(tt\d{7})/.test(document.URL));
+	return (/.*(IMDb).*/.test(title) && /(tt\d{7})/.test(url));
 }
 
 /**
  * Attempt to add the IMDb item to the Boxee queue
  */
-function addIMDbToQueue() {
+function addIMDbToQueue(url) {
 
 }
