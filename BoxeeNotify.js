@@ -59,4 +59,29 @@ function onIMDbMediaPage(title, url) {
  */
 function addIMDbToQueue(url) {
 
+	console.log('Attempting to add IMDb item to Boxee Queue');
+
+	// get IMDb ID from url
+	var imdbID = /(tt\d{7})/.exec(url);
+
+	console.log('IMDb ID: '+imdbID[0]);
+
+	// Get the Boxee ID for this film / tv episode via their API (undocumented)
+	var xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function(data) {
+		if (xhr.readyState == 4 && xhr.status == 200) {
+			console.log(xhr.responseText);
+
+			var boxeeID = /boxee:id>(\d{1,8})<\/boxee:id/.exec(xhr.responseText);
+			console.log('Response from boxee received id= '+boxeeID[1]);
+		}
+	}
+
+	// Make XHR to Boxee. Cross origin XHR permitted by extension manifest ;)
+	var submissionUrl = 'http://res.boxee.tv/title/movie/?imdb_id=' + imdbID[1];
+	console.log('url= '+submissionUrl)
+	xhr.open('GET', submissionUrl, true);
+	xhr.send();
+
+	console.log('Request for boxeeID and data sent');
 }
